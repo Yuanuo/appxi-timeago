@@ -130,45 +130,27 @@ public final class TimeAgo {
 
         final StringBuilder result = new StringBuilder();
         switch (period) {
-            case XMINUTES_PAST:
-                result.append(messages.getMessage(period.msgKey, dim));
-                break;
-            case XHOURS_PAST:
-                result.append(msg(messages, "ml.timeago.aboutanhour.past", period.msgKey, Math.round(dim / 60F)));
-                break;
-            case XDAYS_PAST:
-                result.append(msg(messages, "ml.timeago.oneday.past", period.msgKey, Math.round(dim / 1440F)));
-                break;
-            case XMONTHS_PAST:
-                result.append(msg(messages, "ml.timeago.aboutamonth.past", period.msgKey, Math.round(dim / 43200F)));
-                break;
-            case XYEARS_PAST:
-                result.append(messages.getMessage(period.msgKey, Math.round(dim / 525600F)));
-                break;
-            case XMINUTES_FUTURE:
-                result.append(messages.getMessage(period.msgKey, Math.abs(dim)));
-                break;
-            case XHOURS_FUTURE:
+            case XMINUTES_PAST -> result.append(messages.getMessage(period.msgKey, dim));
+            case XHOURS_PAST -> result.append(msg(messages, "ml.timeago.aboutanhour.past", period.msgKey, Math.round(dim / 60F)));
+            case XDAYS_PAST -> result.append(msg(messages, "ml.timeago.oneday.past", period.msgKey, Math.round(dim / 1440F)));
+            case XMONTHS_PAST -> result.append(msg(messages, "ml.timeago.aboutamonth.past", period.msgKey, Math.round(dim / 43200F)));
+            case XYEARS_PAST -> result.append(messages.getMessage(period.msgKey, Math.round(dim / 525600F)));
+            case XMINUTES_FUTURE -> result.append(messages.getMessage(period.msgKey, Math.abs(dim)));
+            case XHOURS_FUTURE -> {
                 final int hours = Math.abs(Math.round(dim / 60f));
                 result.append(hours == 24
                         ? messages.getMessage("ml.timeago.oneday.future")
                         : msg(messages, "ml.timeago.aboutanhour.future", period.msgKey, hours));
-                break;
-            case XDAYS_FUTURE:
-                result.append(msg(messages, "ml.timeago.oneday.future", period.msgKey, Math.abs(Math.round(dim / 1440f))));
-                break;
-            case XMONTHS_FUTURE:
+            }
+            case XDAYS_FUTURE -> result.append(msg(messages, "ml.timeago.oneday.future", period.msgKey, Math.abs(Math.round(dim / 1440f))));
+            case XMONTHS_FUTURE -> {
                 final int months = Math.abs(Math.round(dim / 43200f));
                 result.append(months == 12
                         ? messages.getMessage("ml.timeago.aboutayear.future")
                         : msg(messages, "ml.timeago.aboutamonth.future", period.msgKey, months));
-                break;
-            case XYEARS_FUTURE:
-                result.append(messages.getMessage(period.msgKey, Math.abs(Math.round(dim / 525600f))));
-                break;
-            default:
-                result.append(messages.getMessage(period.msgKey));
-                break;
+            }
+            case XYEARS_FUTURE -> result.append(messages.getMessage(period.msgKey, Math.abs(Math.round(dim / 525600f))));
+            default -> result.append(messages.getMessage(period.msgKey));
         }
         return result.toString();
     }
