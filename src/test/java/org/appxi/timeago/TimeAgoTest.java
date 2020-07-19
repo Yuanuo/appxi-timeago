@@ -163,14 +163,14 @@ public class TimeAgoTest {
     }
 
     /**
-     * Should show past date time with ten days.
+     * Should show past date time with six days.
      */
     @Test
-    public void shouldShowPastDateTimeWithTenDays() {
+    public void shouldShowPastDateTimeWithSixDays() {
         Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.DAY_OF_MONTH, -10);
+        calendar.add(Calendar.DAY_OF_MONTH, -6);
         String results = TimeAgo.using(calendar.getTimeInMillis(), mTimeAgoMessages);
-        String expected = getExpectedMessage(Periods.XDAYS_PAST.msgKey, 10);
+        String expected = getExpectedMessage(Periods.XDAYS_PAST.msgKey, 6);
         Assert.assertEquals(expected, results);
     }
 
@@ -368,4 +368,42 @@ public class TimeAgoTest {
         String expected = getExpectedMessage(Periods.ONEMINUTE_FUTURE.msgKey);
         Assert.assertEquals(expected, results);
     }
+
+
+    /**
+     * Should show past date time with a week.
+     */
+    @Test
+    public void  shouldShowPastDateTimeWithAWeek() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DAY_OF_MONTH, -8);
+        String results = TimeAgo.using(calendar.getTimeInMillis(), mTimeAgoMessages);
+        String expected = getExpectedMessage(Periods.ONEWEEK_PAST.msgKey, 8);
+        Assert.assertEquals(expected, results);
+    }
+
+    /**
+     * Should show past date time with two weeks.
+     */
+    @Test
+    public void  shouldShowPastDateTimeWithTwoWeeks() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DAY_OF_MONTH, -16);
+        String results = TimeAgo.using(calendar.getTimeInMillis(), mTimeAgoMessages);
+        String expected = getExpectedMessage(Periods.XWEEKS_PAST.msgKey, 2);
+        Assert.assertEquals(expected, results);
+    }
+
+    /**
+     * Should show past date time with three weeks.
+     */
+    @Test
+    public void  shouldShowPastDateTimeWithThreeWeeks() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DAY_OF_MONTH, -23);
+        String results = TimeAgo.using(calendar.getTimeInMillis(), mTimeAgoMessages);
+        String expected = getExpectedMessage(Periods.XWEEKS_PAST.msgKey, 3);
+        Assert.assertEquals(expected, results);
+    }
+
 }

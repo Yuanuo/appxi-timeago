@@ -55,7 +55,9 @@ public final class TimeAgo {
         ABOUTANHOUR_PAST("ml.timeago.aboutanhour.past", distance -> distance >= 45 && distance <= 89),
         XHOURS_PAST("ml.timeago.xhours.past", distance -> distance >= 90 && distance <= 1439),
         ONEDAY_PAST("ml.timeago.oneday.past", distance -> distance >= 1440 && distance <= 2519),
-        XDAYS_PAST("ml.timeago.xdays.past", distance -> distance >= 2520 && distance <= 43199),
+        XDAYS_PAST("ml.timeago.xdays.past", distance -> distance >= 2520 && distance <= 10079),
+        ONEWEEK_PAST("ml.timeago.oneweek.past", distance -> distance >= 10080 && distance <= 20159),
+        XWEEKS_PAST("ml.timeago.xweeks.past", distance -> distance >= 20160 && distance <= 43199),
         ABOUTAMONTH_PAST("ml.timeago.aboutamonth.past", distance -> distance >= 43200 && distance <= 86399),
         XMONTHS_PAST("ml.timeago.xmonths.past", distance -> distance >= 86400 && distance <= 525599),
         ABOUTAYEAR_PAST("ml.timeago.aboutayear.past", distance -> distance >= 525600 && distance <= 655199),
@@ -133,6 +135,7 @@ public final class TimeAgo {
             case XMINUTES_PAST -> result.append(messages.getMessage(period.msgKey, dim));
             case XHOURS_PAST -> result.append(msg(messages, "ml.timeago.aboutanhour.past", period.msgKey, Math.round(dim / 60F)));
             case XDAYS_PAST -> result.append(msg(messages, "ml.timeago.oneday.past", period.msgKey, Math.round(dim / 1440F)));
+            case XWEEKS_PAST -> result.append(msg(messages, "ml.timeago.oneweek.past", period.msgKey, Math.round(dim / 10080F)));
             case XMONTHS_PAST -> result.append(msg(messages, "ml.timeago.aboutamonth.past", period.msgKey, Math.round(dim / 43200F)));
             case XYEARS_PAST -> result.append(messages.getMessage(period.msgKey, Math.round(dim / 525600F)));
             case XMINUTES_FUTURE -> result.append(messages.getMessage(period.msgKey, Math.abs(dim)));
