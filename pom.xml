@@ -6,7 +6,7 @@
 
     <groupId>org.appxi</groupId>
     <artifactId>appxi-timeago</artifactId>
-    <version>21.01.00</version>
+    <version>21.02.00</version>
     <description>Pure Java version of marlonlom/timeago</description>
 
     <properties>
@@ -28,9 +28,6 @@
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
-                <configuration>
-                    <compilerArgs>--enable-preview</compilerArgs>
-                </configuration>
             </plugin>
             <plugin>
                 <artifactId>maven-source-plugin</artifactId>
